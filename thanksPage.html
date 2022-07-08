@@ -28,7 +28,7 @@
             font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
         }
 
-        #email {
+        #mailin {
             color: blue;
             font-size: 25px;
             font-style: italic;
@@ -71,12 +71,13 @@
     <h1>Dear <span id="namein"></span>,<p> Thank You For Enquiry!!</p>
     </h1>
 
-    <p class="msg">Enter OTP which is sent to <span id="email"></span>
+    <p class="msg">Please click on SendOTP to recive One Time Password On Your mail Id <span id="email"></span> Please
+        Verify It
     </p>
-    <div class="otpdiv" >
-        
+    <div class="otpdiv">
+        <button id="otp" onclick="generateOpt()">Send OTP</button>
         <div>
-            <input type="text" pattern="\d*" maxlength="5" id="otpin" placeholder="enter otp here" />
+            <input type="text" pattern="\d*" maxlength="4" id="otpin" placeholder="enter otp here" />
             <p id="otpError"></p>
         </div>
         <button onclick="OTPValidation()" id="Otp">Validate OTP</button>
