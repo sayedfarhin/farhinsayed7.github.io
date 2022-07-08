@@ -46,7 +46,7 @@ function emailValidation() {
         seterror("emailErr", "Please enter your email address");
     } else {
         // Regular expression for basic email validation
-        var regexemail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+        var regexemail = /[a-zA-Z]+[0-9]+@[a-zA-Z]+\.[a-zA-Z]+/;
         if (regexemail.test(email) === false) {
             seterror("emailErr", "Please enter a valid email address");
         } else {
