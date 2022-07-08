@@ -33,12 +33,13 @@ function enableSubmitBtn()
     if((document.getElementById("name").value.length > 0) &&
        (document.getElementById("email").value.length > 0) &&
        (document.getElementById("pancard").value.length > 0) &&
-       (document.getElementById("amt").value.length > 0)  &&
-       (document.getElementById("mainCaptcha").value != document.getElementById("txtInput").value))
+       (document.getElementById("amt").value.length > 0))  
+       //(document.getElementById("mainCaptcha").value != document.getElementById("txtInput").value))
        {
        document.getElementById('submit').disabled = false;
        }
 }
+
 function emailValidation() {
     var email = document.Loanform.email.value;
     // Validate email address
@@ -52,6 +53,7 @@ function emailValidation() {
         } else {
             seterror("emailErr", "");
             emailErr = false;
+            enableSubmitBtn();
         }
     }
     localStorage.setItem("mailout", email);
@@ -60,14 +62,17 @@ function panValidation() {
     var pancard = document.Loanform.pancard.value;
     if (pancard == "") {
         seterror("panErr", "Please enter your PAN card number");
+        
     } else {
         // Regular expression for pan card validation
         var regexpan = /([A-Z]){5}([0-9]){4}([A-Z]){1}$/;
         if (regexpan.test(pancard) === false) {
             seterror("panErr", "Please enter PAN card number in ABCDE1234F format");
+            
         } else {
             seterror("panErr", "");
             panErr = false;
+            enableSubmitBtn();
         }
     }
 }
@@ -76,16 +81,19 @@ function LoanAmtValidation() {
     var amt = document.Loanform.amt.value;
     if (amt == "") {
         seterror("amtErr", "Please enter your loan amount");
+        
     }
     else {
         // Regular expression for amount validation
         var regexamt = /^[0-9]*$/;
         if (regexamt.test(amt) === false) {
             seterror("amtErr", "only numbers are allowed");
+            
         }
         else {
             seterror("amtErr", "");
             amtErr = false;
+            enableSubmitBtn();
         }
 
     }
@@ -97,6 +105,7 @@ function convertNumToWords(){
 function toWords(num){
     // max 9 digits
     if((num = num.toString()).length>9) return seterror("amtErr","Maximum 9digits");
+   
     //logic of converting to words.
     //00,00,00,0,00
     var units=['','one ','two ','three ','four ', 'five ','six ','seven ','eight ','nine ','ten ',
@@ -146,8 +155,7 @@ function CheckValidCaptch(){
     }
 else{       
     document.getElementById('submit').disabled = true;
-    seterror("capErr", "Please enter a valid captcha."); 
-   return false;
+    seterror("capErr", "Please enter a valid captcha.");   
 }
 }
 function removeSpaces(string){
