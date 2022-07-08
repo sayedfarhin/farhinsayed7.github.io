@@ -25,7 +25,7 @@ function nameValidation() {
             enableSubmitBtn();
         }
     }
-    var [first, last] = full_name.split(' ');
+    var [first, last] = name.split(' ');
     localStorage.setItem("nameout", first);
 }
 function enableSubmitBtn()
